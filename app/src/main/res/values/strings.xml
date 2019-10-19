@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">每日一文</string>
+    <string name="author">作者：</string>
+    <string name="digest">摘要：</string>
+    <string name="string_today">今天</string>
+    <string name="string_prev_day">前一天</string>
+    <string name="string_next_day">后一天</string>
+    <string name="string_load_failed">加载失败！</string>
+    <string name="string_reload">点击我重新加载</string>
+</resources>
