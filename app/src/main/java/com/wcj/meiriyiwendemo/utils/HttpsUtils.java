@@ -2,11 +2,6 @@ package com.wcj.meiriyiwendemo.utils;
 
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toolbar;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.wcj.meiriyiwendemo.bean.ArticleBean;
 
 import java.io.BufferedReader;
 import java.io.IOException;

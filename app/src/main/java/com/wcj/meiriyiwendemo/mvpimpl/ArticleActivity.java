@@ -96,6 +96,7 @@ public class ArticleActivity extends BaseActivity implements ArticleView<Article
         this.author.setText(articleBean.getData().getAuthor());
         this.digest.setText(articleBean.getData().getDigest());
         this.title.setText(articleBean.getData().getTitle());
+        this.content.setText("");
         this.content.setText(content);
     }
 

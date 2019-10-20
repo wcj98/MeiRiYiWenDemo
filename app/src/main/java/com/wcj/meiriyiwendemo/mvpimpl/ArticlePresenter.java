@@ -38,8 +38,8 @@ public class ArticlePresenter<V extends ArticleView> extends BasePresenter<V> {
                 mArticleModel.loadTodayArticle(new ArticleModel.Callback<ArticleBean>() {
                     @Override
                     public void onSuccess(ArticleBean articleBean) {
-                        StringBuilder sb = getContent(articleBean);
-                        wf.get().loadSuccess(articleBean, sb.toString());
+                        String content = getContent(articleBean);
+                        wf.get().loadSuccess(articleBean, content);
                         wf.get().showToast("加载成功");
 
                     }
@@ -57,14 +57,17 @@ public class ArticlePresenter<V extends ArticleView> extends BasePresenter<V> {
     }
 
     @NotNull
-    private StringBuilder getContent(ArticleBean articleBean) {
+    private String getContent(ArticleBean articleBean) {
         String content = articleBean.getData().getContent();
         Matcher matcher = Pattern.compile(regex).matcher(content);
+        //清除上一次的内容
+        paras.clear();
         while (matcher.find()) {
             String group = matcher.group();
             paras.add(group);
         }
         StringBuilder sb = new StringBuilder();
+
         for (String s : paras) {
             if(s.length()<10){
                 sb.append(s).append("\r\n");
@@ -73,7 +76,7 @@ public class ArticlePresenter<V extends ArticleView> extends BasePresenter<V> {
             }
 
         }
-        return sb;
+        return sb.toString();
     }
 
     /**
@@ -87,8 +90,8 @@ public class ArticlePresenter<V extends ArticleView> extends BasePresenter<V> {
                 mArticleModel.loadPrevOrNextDayArticle(date,new ArticleModel.Callback<ArticleBean>() {
                     @Override
                     public void onSuccess(ArticleBean articleBean) {
-                        StringBuilder sb = getContent(articleBean);
-                        wf.get().loadSuccess(articleBean, sb.toString());
+                        String content = getContent(articleBean);
+                        wf.get().loadSuccess(articleBean,content);
                         wf.get().showToast("加载成功");
 
                     }

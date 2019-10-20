@@ -30,6 +30,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 public class ArticleModelImpl implements ArticleModel<ArticleBean> {
@@ -41,6 +46,7 @@ public class ArticleModelImpl implements ArticleModel<ArticleBean> {
         if (callback == null) {
             return;
         }
+
 
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
@@ -67,11 +73,13 @@ public class ArticleModelImpl implements ArticleModel<ArticleBean> {
 
                     @Override
                     public void onNext(ArticleBean articleBean) {
+
                         callback.onSuccess(articleBean);
                     }
 
                     @Override
                     public void onError(Throwable e) {
+
                         callback.onFailed(e.toString());
                     }
 
